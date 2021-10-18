@@ -6383,19 +6383,19 @@ class ConsultaContribuyentes
                         $conexion->CerrarConexion($con);
                     }
                 }
-            } elseif ($dia_de_semana == 5) {
+            } elseif ($dia_de_semana == 6) {
                 if ($diferencia >=144) {
                     for ($i=0; $i < count($datos) ; $i++) {
                         self::Crea_cambios_etapa_x_det_etapa_caduca_dispo($tiket, $datos[$i]['user_alta'], $datos[$i]['id_determinante']);
                         self::Cambia_estatus_det_proc_pet_dev_inter_bov($datos[$i]['id_determinante']);
                     }
-                    self::baja_etapas_anteriores_al_cambio_caduc_dispo($tiket); //Se da mantenimiento y se dan de baja las anteriores etapas con el nombre diferente del nuevo propietario
+                        self::baja_etapas_anteriores_al_cambio_caduc_dispo($tiket); //Se da mantenimiento y se dan de baja las anteriores etapas con el nombre diferente del nuevo propietario
                           $query = "UPDATE Tikets SET id_proc = 12, fecha_cancel = GETDATE(), user_cancel = 'BOVEDASA'  WHERE id_tiket = $tiket"; //Por ultimo, se actualiza el nombre del usuario movimiento para que aparezcan sus determinantes en ese ticket
                           $con = $conexion->ObtenerConexionBD();
-                    $prepare = sqlsrv_query($con, $query);
-                    if ($prepare) {
-                        return 'El ticket se cambio a petición de devolución interna.';
-                        $conexion->CerrarConexion($con);
+                        $prepare = sqlsrv_query($con, $query);
+                        if ($prepare) {
+                            return 'El ticket se cambio a petición de devolución interna.';
+                            $conexion->CerrarConexion($con);
                     } else {
                         return 'No se efectuo el movimiento de devolución interna.';
                         $conexion->CerrarConexion($con);
@@ -8053,27 +8053,9 @@ class ConsultaContribuyentes
                       }
                       return 'Cambio exitoso';
                      break;
-                    //  case 1:
-                    // //self::Crea_cambios_etapa_x_det_etapa_busqueda($datos, $tiket);
-                    // for ($i=0; $i < count($datos1) ; $i++) {
-                    //     self::Crea_cambios_etapa_x_det_etapa_busqueda($tiket,$datos1[$i]['user_alta'],$datos1[$i]['id_determinante']);
-                    //     self::Cambia_estatus_det_proc($datos1[$i]['id_determinante']);
-                    //   }
-                    // self::baja_etapas_anteriores_al_cambio_BUSQUEDA($tiket); //Se da mantenimiento y se dan de baja las anteriores etapas con el nombre diferente del nuevo propietario
-                    // $query = "UPDATE Tikets SET id_proc = 7, fecha_valida = GETDATE(), user_valida = '$user_valida'  WHERE id_tiket = $tiket"; //Por ultimo, se actualiza el nombre del usuario movimiento para que aparezcan sus determinantes en ese ticket
-                    // $con = $conexion->ObtenerConexionBD();
-                    // $prepare = sqlsrv_query($con, $query);
-                    //     if ($prepare) {
-                    //         return 'Cambio exitoso';
-                    //         $conexion->CerrarConexion($con);
-                    //     } else {
-                    //         return 'no se efectuo el cambio';
-                    //         $conexion->CerrarConexion($con);
-                    //     }
-                    //     return 'Cambio exitoso';
-                    //     break;
+  
              }
-            //return 'Entra exitoso';
+       
         } else {
             echo "No hay datos ";
         }
