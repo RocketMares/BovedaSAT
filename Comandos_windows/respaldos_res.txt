@@ -1,0 +1,8 @@
+Msg 911, Level 16, State 1, Server 299MOCE7194C03\SQLEXPRESS, Line 1
+La base de datos 'AdventureWorks2012' no existe. Asegúrese de que ha escrito el nombre correctamente.
+Se han procesado 1112 páginas para la base de datos 'COMUNICADOS', archivo 'COMUNICADOS' en el archivo 2.
+Se han procesado 3 páginas para la base de datos 'COMUNICADOS', archivo 'COMUNICADOS_log' en el archivo 2.
+BACKUP DATABASE procesó correctamente 1115 páginas en 0.539 segundos (16.154 MB/s).
+Se han procesado 768 páginas para la base de datos 'GestionEntrevistas', archivo 'beto' en el archivo 1.
+Se han procesado 2 páginas para la base de datos 'GestionEntrevistas', archivo 'beto_log' en el archivo 1.
+BACKUP DATABASE procesó correctamente 770 páginas en 0.371 segundos (16.214 MB/s).
