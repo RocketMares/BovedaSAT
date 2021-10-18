@@ -1,8 +1,5 @@
 <?php 
-/**
-  @author: Raj Trivedi (India), 2009-10-14 
-  @modify: Taylor Lopes (Brazil), 2012-04-06
-*/
+
 class barCodeGenrator {
 private $file;
 private $into;
@@ -110,6 +107,7 @@ private $digitArray = array(0=>"00110",1=>"10001",2=>"01001",3=>"11000",4=>"0010
 					imagegif($image);
 			   }
 		imagedestroy($image);
+		
 	}
 }
 
