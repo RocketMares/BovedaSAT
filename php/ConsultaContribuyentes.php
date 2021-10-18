@@ -3155,7 +3155,7 @@ class ConsultaContribuyentes
             return true;
             $conexion->CerrarConexion($con);
         } else {
-            return false;
+            return print_r(sqlsrv_errors(),false);
             $conexion->CerrarConexion($con);
         }
     }
