@@ -1,9 +1,6 @@
 ﻿<?php
-//$URL_ = "localhost:8282";
-//$URL_ = "192.168.1.69:2323";
-//$URL_ = "99.85.24.227:2323";
-//$URL_ = '99.85.26.227:8282';
-$URL_ = '99.85.24.8:8282';
+$URL_ = "localhost:8282";
+
 
 session_start(); //valida si esta activa la seci?n, sino, no le deja seguir viendo la data y lo regresa a loginDEj.php
 if (isset($_SESSION['ses_id_usuario'])
