@@ -1,4 +1,6 @@
 <?php
+
+
   include_once 'ConsultaContribuyentes.php';
   $busqueda = new ConsultaContribuyentes();
   //$datos = $_POST["cancela"];
@@ -8,6 +10,6 @@
   include_once 'sesion.php';
   if(session_destroy()){
     header('location:../login.php');
-}
+  }
 
 ?>

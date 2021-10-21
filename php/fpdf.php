@@ -411,19 +411,14 @@ function Header()
 				$this->Text(240, 36, utf8_decode($admin_gen));
 				$this->Text(240, 40, utf8_decode('Ciudad de México a '.$Fecha_hoy));
         break;
-		default:
-		
-			// $this->Image('../img/logo.png', 110, 5, 90, 17);
-  
-			// $this->SetFont('Arial', '', 10);
-		
-			// $this->Text(122, 32, utf8_decode('Administración Desconcentrada de Recaudación'));
-			// $this->Text(43, 36, utf8_decode('Administración Desconcentrada de Recaudación Distrito Federal "4" con sede en el Distrito Federal'));
-		
-			// $this->SetFont('Arial', 'B', 12);
-			// $this->Text(12, 48, utf8_decode('CARTA RESPONSIVA PARA CUENTA DE ACCESO A LOS SISTEMAS'));
-			// $this->Text(12, 52, utf8_decode('INFORMÁTICOS Y/O SERVICIOS ELECTRÓNICOS DE INFORMACIÓN DEL'));
-			// $this->Text(12, 56, utf8_decode('SERVICIO DE ADMINISTRACIÓN TRIBUTARIA'));
+		default:	
+					$this->Image('../img/Cabecera.png', 10, 10, 90, 17);
+					$this->SetFont('Arial', 'B', 10);
+
+					$this->Text(120, 12, utf8_decode('Administración Desconcentrada de Recaudación'));
+					$this->Text(120, 16, utf8_decode('Administración Desconcentrada de Recaudación'));
+					$this->Text(120, 20, utf8_decode('Distrito Federal "4" con sede en el Distrito Federal'));
+					$this->Text(120, 24, utf8_decode('Subadministración de Control y Análisis Estratégico'));
 		break;
     }
 
@@ -455,8 +450,28 @@ function Footer()
 		$this->Text(250, 205, utf8_decode('FIRMA DEL SOLICITANTE'));
 		$this->AliasNbPages();
 		$this->Text(330, 205, utf8_decode( 'Pag. '. $this->PageNo().'/{nb}'));
-	default:
-			# code...
+		$this->Ln();
+	case isset($_GET['id_usuario']):
+	include_once 'MetodosUsuarios.php';
+	$usuario_1 = new MetodosUsuarios();
+    $id_empleado = $_GET["id_usuario"];
+	$objUsuario = $usuario_1->Para_responsiva($id_empleado);
+	$admin = $objUsuario["id_admin"];
+	$Aut = $usuario_1->Para_responsiva1($id_empleado,$admin);
+
+	$domicilio = $Aut["Domicilio"];
+	$this->SetDrawColor(188,149,0);
+	$this->SetLineWidth(3);
+	$this->Line(168, 282, 20, 282);
+	$this->SetFont('Arial', 'B', 7);
+	$this->SetTextColor(188,149,0);
+	$this->Text(20, 287, utf8_decode($domicilio." Sat.gob.mx/ "));
+	$this->Text(20, 290, utf8_decode("marca SAT: 5562722728 "));
+	$this->Image('../img/pie_pag,png.png', 168, 278, 30, 16);
+	$this->SetTextColor(0,0,0);
+	$this->SetFont('Arial', 'B', 7);
+	$this->Text(195, 290, utf8_decode( 'Pag. '. $this->PageNo()));
+
 	break;
 	}
 

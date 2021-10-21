@@ -2542,7 +2542,7 @@ class ConsultaContribuyentes
         //SE MANDA A LLAMAR LA CONEXI?N Y SE ABRE
         $con = $conexion->ObtenerConexionBD();
         //SE CREA UN QUERY
-        $query = "SELECT * FROM Autoridad WHERE estatus = 'A' ";
+        $query = "SELECT * FROM Autoridad WHERE estatus = 'A' Order by nombre_autoridad asc ";
         //SE VALIDA EL QUERY CON FORME A LA CONEXI?N
         $prepare = sqlsrv_query($con, $query);
         if ($prepare) {
@@ -3531,14 +3531,38 @@ class ConsultaContribuyentes
         include_once 'conexion.php';
         $conexion = new ConexionSQL(); // SE INSTANCIA LA CLASE CONEXIÓN
         //SE CREA UN QUERY
-        $query = "SELECT*FROM Determinante Where RDFDA = '$RDFDA'";
+        $query = "SELECT * FROM Determinante Where RDFDA = '$RDFDA'";
         //SE MANDA A LLAMAR LA CONEXIÓN Y SE ABRE
         $con = $conexion->ObtenerConexionBD();
         //SE VALIDA EL QUERY CON FORME A LA CONEXIÓN
         $prepare = sqlsrv_query($con, $query);
         if ($prepare) {
             while ($row = sqlsrv_fetch_array($prepare, SQLSRV_FETCH_ASSOC)) {
-                $filas = array('RDFDA' => $row["RDFDA"]);
+                $filas =$row;
+            }
+            if (isset($filas)) {
+                return $filas;
+            } else {
+                return false;
+            }
+            $conexion->CerrarConexion($con);
+        } else {
+            return false;
+        }
+    }
+    public static function Convierte_fec_en_varchar($fec)
+    {
+        include_once 'conexion.php';
+        $conexion = new ConexionSQL(); // SE INSTANCIA LA CLASE CONEXIÓN
+        //SE CREA UN QUERY
+        $query = "SELECT CAST('$fec' as varchar) fec_string";
+        //SE MANDA A LLAMAR LA CONEXIÓN Y SE ABRE
+        $con = $conexion->ObtenerConexionBD();
+        //SE VALIDA EL QUERY CON FORME A LA CONEXIÓN
+        $prepare = sqlsrv_query($con, $query);
+        if ($prepare) {
+            while ($row = sqlsrv_fetch_array($prepare, SQLSRV_FETCH_ASSOC)) {
+                $filas =$row;
             }
             if (isset($filas)) {
                 return $filas;

@@ -1982,6 +1982,7 @@ class MetodosUsuarios
     Emp.nombre_empleado,
     Emp.fecha_alta,
     Emp.rfc_corto,
+    adminx.Domicilio,
     Emp.correo,
     Emp.user_alta,
     per.nombre_perfil,
@@ -1990,6 +1991,7 @@ class MetodosUsuarios
     (select correo from Empleado where id_perfil = 7 AND estatus = 'A' AND id_puesto = 2 AND id_admin = $admin) As correo_jefe,
     (select rfc_corto from Empleado where id_perfil = 7 AND estatus = 'A' AND id_puesto = 2 AND id_admin = $admin) As rfc_jefe
     FROM Empleado Emp
+    INNER JOIN Administracion adminx ON Emp.id_admin = adminx.id_admin
     INNER JOIN Puesto Pues ON Emp.id_puesto = Pues.id_puesto
     inner join Perfil per on Emp.id_perfil = per.id_perfil
     inner join Departamento dep on Emp.id_depto = dep.id_depto
@@ -2018,6 +2020,7 @@ class MetodosUsuarios
     $con = $conexion->ObtenerConexionBD();
     $query = "SELECT 
     enp.nombre_empleado,
+    enp.no_empleado,
     enp.fecha_alta,
     enp.rfc_corto,
     enp.correo,

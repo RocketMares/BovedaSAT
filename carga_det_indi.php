@@ -68,7 +68,7 @@ $menu = new Menu();
                         required maxlength="13">
 
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="validationServerUsername">Razón social:</label>
                     <div class="input-group">
                         <input type="text" class="form-control " id="razon_social" name="razon_social"
@@ -76,7 +76,7 @@ $menu = new Menu();
 
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6">
                     <label for="validationServerUsername">Autoridad Determinante:</label>
                     <div class="input-group">
                         <select class="custom-select" id="autoridad_selec" name="autoridad_selec" required>
@@ -96,12 +96,12 @@ $menu = new Menu();
                 </div>
             </div>
             <div class="form-row">
-                <div class='form-group col-md-6'>
+                <div class='form-group col-md-3'>
                     <label for='fecha_seg'>Fecha del determinante:<samp class='text-danger'>*</samp></label>
                     <input type='text' class='form-control fecha_end ' id='fecha_det' name='fecha_det'
                         placeholder='yyyy/mm/dd'>
                 </div>
-                <div class="col-md-3 mb-3">
+                <div class="col-md-6">
                     <label for="validationServer05">Empleado Asignado:</label>
                     <select class="custom-select" id="empleado_selec" name="empleado_selec">
                         <option value="0" selected>Selecciona empleado</option>
@@ -135,6 +135,14 @@ $menu = new Menu();
                         </select>
                     </div>
                 </div>
+            </div>
+            <div class="form-row">
+                <div class='form-group col-md-8'>
+                    <label for='llave_rdfda'>Genera llave RDFDA:<samp class='text-danger'>*</samp></label>
+                    <input type='text'  class='form-control ' id='llave_rdfda' name='llave_rdfda'
+                        placeholder='RFC/DETERMINANTE/FEC_DET/AUTORIDAD' disabled>
+                </div>
+                
             </div>
             <button class="btn btn-primary" type="button" onclick="registro_det()">Registrar determinante</button>
 

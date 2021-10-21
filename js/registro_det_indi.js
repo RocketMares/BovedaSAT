@@ -7,7 +7,7 @@ var fec_det = $('#fecha_det').val();
 var emp = $('#empleado_selec').val();
 var fec_inv = $('#fecha_inventario').val();
 var estatus = $('#Estatus_cred').val();
-
+var RDFDA = $('#llave_rdfda').val();
 
 
 
@@ -116,3 +116,26 @@ if (resol == '') {
 }
 
 }
+
+
+
+$(document).ready(function(){
+    $('#empleado_selec').on('click',function(){
+        var rfc = $('#RFC_contri').val();
+        var det = $('#Num_det').val();
+        var fec_det = $('#fecha_det').val();
+        var aut = $('#autoridad_selec').val();
+        var d = parseFloat(fec_det, 'int');
+        $('#llave_rdfda').val(rfc+"/"+det+"/"+d+"/"+aut,);
+        alert(d);
+  
+        var RDFDA =  $('#llave_rdfda').val();
+      
+    //    $.post("php/valida_carga_indiv.php",{val_RDFDA:RDFDA},function(data){
+    //         toastr.success(data,'Notificacion',{
+    //             "progressBar":true
+    //         })
+    //    })   
+    })
+
+})

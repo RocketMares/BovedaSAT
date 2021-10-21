@@ -1105,6 +1105,7 @@ if (isset($_POST['detalle_RDFDA'])) {
     det.num_determinante,
     det.fecha_alta,
     det.fojas,
+    det.fecha_inv,
 	(SELECT SUM(eta.fojas) FROM Etapa_poc eta where id_determinante = (select id_determinante from Determinante where RDFDA = '$RDFDA') and id_proc_det = 15 and estatus = 'A' ) integra_fojas,
     aut.nombre_autoridad,
     Emp.nombre_empleado
@@ -1124,6 +1125,7 @@ if (isset($_POST['detalle_RDFDA'])) {
        $rfc = $fila2['rfc'];
        $num_det = $fila2['num_determinante'];
        $fecha_carga = $fila2['fecha_alta']->format('d/m/Y H:i');
+       $fecha_inv = $fila2['fecha_inv']->format('d/m/Y');
        $user_carga = $fila2['nombre_empleado'];
        $autoridad = $fila2['nombre_autoridad'];
        $fojas = $fila2['fojas'];
@@ -1152,10 +1154,11 @@ if (isset($_POST['detalle_RDFDA'])) {
     <li class='list-group-item'> <p class = 'font-weight-bold'> Nombre del Contribuyente:  $Contri </p></li>
     <li class='list-group-item'><p class = 'font-weight-bold'> Número de la determinante:  $num_det </p></li>
     <li class='list-group-item'><p class = 'font-weight-bold'> Número de fojas registradas:  $fotas_totales </p></li>
-    <li class='list-group-item'> <p class = 'font-weight-bold'>Autoridad determinante:  $autoridad </p></li>
-    <li class='list-group-item'><p class = 'font-weight-bold'>   Fecha de carga:  $fecha_carga </p></li>
-    <li class='list-group-item'><p class = 'font-weight-bold'> Usuario encargado: $user_encargado </p></li>
-    <li class='list-group-item'><p class = 'font-weight-bold'>   Usuario carga:  $user_carga </p></li>
+    <li class='list-group-item'><p class = 'font-weight-bold'>Autoridad determinante:  $autoridad </p></li>
+    <li class='list-group-item'><p class = 'font-weight-bold'>Fecha de captura:  $fecha_inv </p></li>
+    <li class='list-group-item'><p class = 'font-weight-bold'>Fecha de carga:  $fecha_carga </p></li>
+    <li class='list-group-item'><p class = 'font-weight-bold'>Usuario encargado: $user_encargado </p></li>
+    <li class='list-group-item'><p class = 'font-weight-bold'>Usuario carga:  $user_carga </p></li>
   </ul>
 </div>
 </div>

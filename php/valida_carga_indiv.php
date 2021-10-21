@@ -35,3 +35,22 @@ if(isset($_POST['data'])){
 
 
  }
+
+ if (isset($_POST['val_RDFDA'])) {
+    $RDFDA = $_POST['val_RDFDA'];
+    include_once 'ConsultaContribuyentes.php';
+    $metodos = new ConsultaContribuyentes();
+    $validacion = $metodos->Consulta_RDFDA_exist($RDFDA); 
+    if (!$validacion) {
+        echo "No hay nada";
+    }
+    else {
+        echo "Ya existe esta determinante, esta asignada a ";
+    }
+  
+ 
+ }
+ if (isset($_POST['fec_con'])) {
+    $fec_con = $_POST['fec_con'];
+ 
+ }
